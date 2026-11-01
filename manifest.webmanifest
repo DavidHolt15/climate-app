@@ -1,0 +1,16 @@
+{
+  "id": "./",
+  "name": "Climate",
+  "short_name": "Climate",
+  "description": "Outdoor weather, indoor climate and a workout calendar.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b1118",
+  "theme_color": "#0b1118",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

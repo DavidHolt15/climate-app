@@ -1,0 +1,5 @@
+# local tooling, not part of the published app
+.claude/
+node_modules/
+data/
+*.tmp
