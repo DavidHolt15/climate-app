@@ -76,15 +76,22 @@ Uses MET Norway's free, public **Locationforecast** API directly from the
 browser:
 
 ```
-https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=..&lon=..
+https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=..&lon=..
 ```
 
 No API key needed. It refreshes every 10 minutes (their guidance is not to
 poll more often than the forecast actually changes). Shows current temp, the
 next-24-hours high and low, humidity with dew point, wind with a direction
-arrow, pressure, next-hour rain, a weather icon, and a 12-hour strip whose
+arrow, UV index, next-hour rain, a weather icon, and a 12-hour strip whose
 bars show the temperature trend. The last good forecast is kept on the
 tablet and shown when yr.no can't be reached.
+
+The **UV index** tile shows MET Norway's forecast for the current hour with
+the WHO category (Low below 3, Moderate 3–5.9, High 6–7.9, Very high 8–10.9,
+Extreme 11 and up). MET only forecasts it for a **cloud-free sky**, so on a
+cloudy day the real value is lower; the tile says "clear-sky" for that
+reason. This is why the app uses the `complete` feed rather than `compact`:
+only `complete` includes UV.
 
 **Two things worth knowing:**
 

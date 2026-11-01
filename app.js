@@ -115,7 +115,8 @@
   async function loadOutdoor() {
     $('placeName').textContent = cfg.place;
     try {
-      const url = 'https://api.met.no/weatherapi/locationforecast/2.0/compact' +
+      // "complete" rather than "compact": only it carries the UV index
+      const url = 'https://api.met.no/weatherapi/locationforecast/2.0/complete' +
         `?lat=${Number(cfg.lat).toFixed(4)}&lon=${Number(cfg.lon).toFixed(4)}`;
       const res = await fetch(url, { cache: 'no-store' });
       if (!res.ok) throw new Error(`yr.no answered HTTP ${res.status}`);
@@ -158,6 +159,11 @@
     }
   }
 
+  // WHO exposure categories
+  function uvCategory(uv) {
+    return uv < 3 ? 'Low' : uv < 6 ? 'Moderate' : uv < 8 ? 'High' : uv < 11 ? 'Very high' : 'Extreme';
+  }
+
   function setTile(id, value, suffix = '') {
     $(id).textContent = value === '—' ? '—' : `${value} ${suffix}`.trim();
   }
@@ -189,7 +195,10 @@
     $('tWindDir').textContent = hasDir ? `from ${compass(d.wind_from_direction)}` : '';
     $('windArrow').classList.toggle('on', hasDir);
     if (hasDir) $('windArrow').style.transform = `rotate(${d.wind_from_direction}deg)`; // points where the wind blows to
-    setTile('tPress', fmt(d.air_pressure_at_sea_level, 0), 'hPa');
+    // UV index: MET only forecasts it for a cloud-free sky, so the real value can be lower
+    const uv = d.ultraviolet_index_clear_sky;
+    $('tUv').textContent = Number.isFinite(uv) ? fmt(uv, 1) : '—';
+    $('tUvNote').textContent = Number.isFinite(uv) ? `${uvCategory(uv)} · clear-sky` : '';
     setTile('tRain', next1?.details ? fmt(next1.details.precipitation_amount, 1) : '—', 'mm');
 
     // next 12 hours (entries that carry a 1-hour forecast); bar height shows the temperature
