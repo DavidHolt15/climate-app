@@ -29,7 +29,10 @@ It is a **hosted web app (PWA)**. The files sit on a static HTTPS host
 1. Open **https://davidholt15.github.io/climate-app/** in **Chrome** on the
    tablet.
 2. Chrome menu (⋮) → **Add to Home screen** / **Install app**.
-3. Open it from the new icon. It runs full-screen like a native app.
+3. Open it from the new icon. It runs **fullscreen**: the status bar and
+   navigation bar hide themselves, and swiping from the top or bottom edge
+   shows them briefly. (If the status bar still shows, remove the icon and
+   install again; Android keeps the display mode it saw at install time.)
 4. Tap **Settings** and check the place, latitude/longitude (default
    **Kongsberg**, 59.6689, 9.6502) and the sensor address.
 
@@ -61,6 +64,11 @@ Tap **Settings** (bottom of the rail, or the bottom bar) to set:
 
 Settings are stored in the browser on the tablet. They survive restarts but
 are specific to that device.
+
+**Fullscreen button**: above Settings there is a **Fullscreen** button. It
+appears when the app is opened in a normal Chrome tab (or installed in an
+older way) and hides the system bars on tap; it is not shown when the
+installed app is already fullscreen.
 
 ## Outdoor data (yr.no)
 

@@ -5,7 +5,8 @@
   "description": "Outdoor weather, indoor climate and a workout calendar.",
   "start_url": "./index.html",
   "scope": "./",
-  "display": "standalone",
+  "display": "fullscreen",
+  "display_override": ["fullscreen", "standalone"],
   "background_color": "#0b1118",
   "theme_color": "#0b1118",
   "icons": [

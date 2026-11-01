@@ -49,6 +49,22 @@
   tickClock();
   setInterval(tickClock, 15 * 1000);
 
+  // ---------- fullscreen ----------
+  // Installed from the home screen the app already runs fullscreen (see the manifest), so the status and
+  // navigation bars hide themselves and a swipe from the screen edge shows them briefly. Opened in an
+  // ordinary browser tab, or installed before that setting existed, this button does the same.
+  const fullscreenBtn = $('fullscreenBtn');
+  if (document.fullscreenEnabled && !matchMedia('(display-mode: fullscreen)').matches) {
+    fullscreenBtn.hidden = false;
+    fullscreenBtn.addEventListener('click', () => {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen({ navigationUI: 'hide' }).catch(() => { /* refused: needs a tap */ });
+    });
+    document.addEventListener('fullscreenchange', () => {
+      fullscreenBtn.querySelector('span').textContent = document.fullscreenElement ? 'Exit' : 'Fullscreen';
+    });
+  }
+
   // ---------- formatting helpers ----------
   const fmt = (v, digits = 0) =>
     (v === null || v === undefined || Number.isNaN(Number(v))) ? '—' : Number(v).toFixed(digits);
