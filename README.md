@@ -26,7 +26,8 @@ It is a **hosted web app (PWA)**. The files sit on a static HTTPS host
 
 ### Install on the tablet
 
-1. Open the app's address in **Chrome** on the tablet.
+1. Open **https://davidholt15.github.io/climate-app/** in **Chrome** on the
+   tablet.
 2. Chrome menu (⋮) → **Add to Home screen** / **Install app**.
 3. Open it from the new icon. It runs full-screen like a native app.
 4. Tap **Settings** and check the place, latitude/longitude (default
@@ -34,11 +35,12 @@ It is a **hosted web app (PWA)**. The files sit on a static HTTPS host
 
 ### Publish / update
 
-Any static HTTPS host works. With GitHub Pages: put this folder in a
-repository, then Settings → Pages → deploy from the `main` branch (root). To
-update, commit and push; a minute or so later the tablet picks it up the next
-time the app is opened online. (`.claude/` is not published; see
-`.gitignore`.)
+The app is published with GitHub Pages from the `main` branch of
+[DavidHolt15/climate-app](https://github.com/DavidHolt15/climate-app). To
+update it, commit and push to `main`; a minute or so later the tablet picks
+the change up the next time the app is opened online. (`.claude/` is not
+published; see `.gitignore`.) Any other static HTTPS host would work the same
+way.
 
 The whole app is public once published. It contains no personal data: your
 workouts, settings and sensor address live only on the tablet.
